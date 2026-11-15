@@ -1,0 +1,68 @@
+[
+  {
+    "patient_id": "PAT-1001",
+    "member_id": "MEM-MC-9001",
+    "patient_name": "Elena Morales",
+    "dob": "1978-04-12",
+    "plan_name": "MedCore Gold PPO",
+    "status": "ACTIVE",
+    "eligible": true,
+    "effective_date": "2024-01-01",
+    "termination_date": null,
+    "coverage_percentage": 100,
+    "covered_procedures": [
+      "72148",
+      "70553",
+      "93306"
+    ],
+    "reason": "Active MedCore Gold PPO coverage in good standing with 100% diagnostic imaging benefit."
+  },
+  {
+    "patient_id": "PAT-1002",
+    "member_id": "MEM-MC-9002",
+    "patient_name": "Robert Vance",
+    "dob": "1962-09-23",
+    "plan_name": "MedCore Silver HMO",
+    "status": "TERMINATED",
+    "eligible": false,
+    "effective_date": "2023-01-01",
+    "termination_date": "2025-12-31",
+    "coverage_percentage": 0,
+    "covered_procedures": [],
+    "reason": "Policy terminated on 2025-12-31 due to non-renewal; coverage is inactive on the requested service date."
+  },
+  {
+    "patient_id": "PAT-1003",
+    "member_id": "MEM-MC-9003",
+    "patient_name": "Marcus Holloway",
+    "dob": "1971-11-08",
+    "plan_name": "MedCore Standard PPO",
+    "status": "ACTIVE",
+    "eligible": true,
+    "effective_date": "2025-01-01",
+    "termination_date": null,
+    "coverage_percentage": 80,
+    "covered_procedures": [
+      "27447",
+      "72148"
+    ],
+    "reason": "Active MedCore Standard PPO coverage with 80% surgical coinsurance benefit."
+  },
+  {
+    "patient_id": "PAT-1004",
+    "member_id": "MEM-MC-9004",
+    "patient_name": "Sophia Chen",
+    "dob": "1955-06-19",
+    "plan_name": "MedCore Platinum Advantage",
+    "status": "ACTIVE",
+    "eligible": true,
+    "effective_date": "2024-06-01",
+    "termination_date": null,
+    "coverage_percentage": 90,
+    "covered_procedures": [
+      "93306",
+      "72148"
+    ],
+    "reason": "Active MedCore Platinum Advantage coverage with 90% diagnostic cardiology benefit."
+  }
+]

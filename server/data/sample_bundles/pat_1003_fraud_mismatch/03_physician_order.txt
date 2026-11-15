@@ -1,0 +1,10 @@
+PHYSICIAN ORDER
+Patient: Marcus Holloway
+Patient ID: PAT-1003
+Member ID: MEM-MC-9003
+Procedure Ordered: Total Knee Arthroplasty
+CPT Code: 27447
+ICD-10 Diagnosis Code: J06.9
+Ordering Physician: Dr. Victor Krell, MD
+NPI: 9999999999
+Priority: Urgent

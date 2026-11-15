@@ -1,0 +1,13 @@
+PRIOR AUTHORIZATION REQUEST
+Insurer: MedCore Health Insurance
+Plan Name: MedCore Silver HMO
+Patient Name: Robert Vance
+Patient ID: PAT-1002
+Member ID: MEM-MC-9002
+Diagnosis Code: M17.11
+Requested Service: Total Knee Arthroplasty
+Procedure Code: 27447
+Urgency: Routine
+Ordering Physician: Dr. Priya Nair, MD
+Provider NPI: 2345678901
+Clinical Justification: Severe right knee primary osteoarthritis (Kellgren-Lawrence grade 4) refractory to 12 weeks physical therapy and intra-articular corticosteroid injections.

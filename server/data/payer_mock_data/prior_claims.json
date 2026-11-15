@@ -1,0 +1,22 @@
+[
+  {
+    "claim_id": "CLM-2025-8812",
+    "patient_id": "PAT-1001",
+    "member_id": "MEM-MC-9001",
+    "procedure_code": "99214",
+    "diagnosis_code": "M54.5",
+    "service_date": "2026-09-10",
+    "status": "PAID",
+    "provider_npi": "1234567890"
+  },
+  {
+    "claim_id": "CLM-2026-9941",
+    "patient_id": "PAT-1003",
+    "member_id": "MEM-MC-9003",
+    "procedure_code": "27447",
+    "diagnosis_code": "M17.11",
+    "service_date": "2026-11-05",
+    "status": "SUBMITTED",
+    "provider_npi": "9999999999"
+  }
+]

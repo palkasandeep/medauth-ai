@@ -1,0 +1,40 @@
+{
+  "checkpoint_store_path": "server/data/workflow_checkpoints.db",
+  "poll_interval_ms": 2000,
+  "mock_payer_base_url": "http://localhost:4000/payer",
+  "nodes": {
+    "document": {
+      "mode": "real"
+    },
+    "completeness": {
+      "mode": "real"
+    },
+    "eligibility": {
+      "mode": "real"
+    },
+    "risk": {
+      "mode": "real"
+    },
+    "retrieval": {
+      "mode": "real"
+    },
+    "decision": {
+      "mode": "real"
+    },
+    "reflection": {
+      "mode": "real"
+    },
+    "reporting": {
+      "mode": "real"
+    },
+    "indexing": {
+      "mode": "real"
+    },
+    "human_review": {
+      "mode": "real"
+    },
+    "chat": {
+      "mode": "real"
+    }
+  }
+}

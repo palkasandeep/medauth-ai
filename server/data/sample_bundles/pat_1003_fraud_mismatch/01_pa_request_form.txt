@@ -1,0 +1,13 @@
+PRIOR AUTHORIZATION REQUEST
+Insurer: MedCore Health Insurance
+Plan Name: MedCore Standard PPO
+Patient Name: Marcus Holloway
+Patient ID: PAT-1003
+Member ID: MEM-MC-9003
+Diagnosis Code: J06.9
+Requested Service: Total Knee Arthroplasty
+Procedure Code: 27447
+Urgency: Urgent
+Ordering Physician: Dr. Victor Krell, MD
+Provider NPI: 9999999999
+Clinical Justification: Patient presents with acute upper respiratory infection (J06.9) and mild sore throat; requesting Total Knee Arthroplasty (27447).

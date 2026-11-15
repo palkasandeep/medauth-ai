@@ -1,0 +1,5 @@
+PATIENT PHOTO ID
+Full Name: Elena Morales
+Patient ID: PAT-1001
+DOB: 1978-04-12
+ID Verification: Verified State Driver License on file.

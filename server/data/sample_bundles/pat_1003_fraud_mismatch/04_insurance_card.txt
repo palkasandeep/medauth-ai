@@ -1,0 +1,6 @@
+INSURANCE CARD
+Payer: MedCore
+Plan: MedCore Standard PPO
+Member Name: Marcus Holloway
+Member ID: MEM-MC-9003
+Patient ID: PAT-1003

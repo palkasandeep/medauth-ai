@@ -1,0 +1,6 @@
+INSURANCE CARD
+Payer: MedCore
+Plan: MedCore Silver HMO
+Member Name: Robert Vance
+Member ID: MEM-MC-9002
+Patient ID: PAT-1002

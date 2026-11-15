@@ -1,0 +1,8 @@
+INSURANCE CARD
+Payer: MedCore
+Plan: MedCore Gold PPO
+Member Name: Elena Morales
+Member ID: MEM-MC-9001
+Patient ID: PAT-1001
+Effective Date: 2024-01-01
+Status: Active

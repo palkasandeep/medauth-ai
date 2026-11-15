@@ -1,0 +1,10 @@
+PHYSICIAN ORDER
+Patient: Elena Morales
+Patient ID: PAT-1001
+Member ID: MEM-MC-9001
+Procedure Ordered: MRI Lumbar Spine Without Contrast
+CPT Code: 72148
+ICD-10 Diagnosis Code: M54.5
+Ordering Physician: Dr. Marcus Vance, MD
+NPI: 1234567890
+Priority: Routine

@@ -1,0 +1,183 @@
+{
+  "insurer_name": "MedCore",
+  "mandatory_docs": [
+    "pa_request_form",
+    "clinical_notes",
+    "physician_order",
+    "insurance_card",
+    "lab_results",
+    "imaging_report",
+    "referral_letter",
+    "photo_id"
+  ],
+  "required_case_fields": [
+    "patient_id",
+    "member_id",
+    "diagnosis_code",
+    "procedure_code",
+    "requested_service"
+  ],
+  "supported_extensions": [
+    ".txt",
+    ".pdf",
+    ".docx",
+    ".png",
+    ".json"
+  ],
+  "duplicate_window_days": 30,
+  "lab_tolerance_band": 0.1,
+  "lab_reference_ranges": {
+    "wbc": {
+      "min": 4,
+      "max": 11,
+      "unit": "10^3/uL"
+    },
+    "hemoglobin": {
+      "min": 12,
+      "max": 17.5,
+      "unit": "g/dL"
+    },
+    "platelets": {
+      "min": 150,
+      "max": 450,
+      "unit": "10^3/uL"
+    },
+    "creatinine": {
+      "min": 0.6,
+      "max": 1.3,
+      "unit": "mg/dL"
+    },
+    "glucose": {
+      "min": 70,
+      "max": 140,
+      "unit": "mg/dL"
+    },
+    "hba1c": {
+      "min": 4,
+      "max": 6.4,
+      "unit": "%"
+    },
+    "potassium": {
+      "min": 3.5,
+      "max": 5.1,
+      "unit": "mmol/L"
+    },
+    "sodium": {
+      "min": 135,
+      "max": 145,
+      "unit": "mmol/L"
+    },
+    "esr": {
+      "min": 0,
+      "max": 20,
+      "unit": "mm/hr"
+    }
+  },
+  "crosswalk": {
+    "27447": [
+      "M17.11",
+      "M17.12",
+      "M17.0",
+      "M17.9"
+    ],
+    "70553": [
+      "G43.909",
+      "R51.9",
+      "G40.909",
+      "I63.9"
+    ],
+    "72148": [
+      "M54.5",
+      "M54.50",
+      "M51.26",
+      "M54.16",
+      "M47.816"
+    ],
+    "93306": [
+      "I50.9",
+      "I25.10",
+      "I48.91",
+      "I35.0"
+    ]
+  },
+  "risk_tiers": {
+    "low": {
+      "max_score": 0.34,
+      "label": "low"
+    },
+    "medium": {
+      "max_score": 0.69,
+      "label": "medium"
+    },
+    "high": {
+      "max_score": 1,
+      "label": "high"
+    }
+  },
+  "human_review_thresholds": {
+    "min_confidence": 0.8,
+    "escalate_decisions": [
+      "DENIED",
+      "PARTIALLY_APPROVED",
+      "REQUIRES_PEER_REVIEW"
+    ],
+    "escalate_on_fraud_indicator": true,
+    "escalate_on_non_low_risk": true,
+    "escalate_on_peer_review_flag": true,
+    "escalate_on_reflection_failure": true
+  },
+  "policy_rules": {
+    "general": [
+      {
+        "rule_id": "GEN-ELIG-001",
+        "name": "Active Member Eligibility",
+        "is_eligibility_rule": true,
+        "rule_text": "The member must hold active, verified MedCore coverage on the date of request and the requested service must be a covered benefit."
+      },
+      {
+        "rule_id": "GEN-CLIN-002",
+        "name": "Clinical Justification & Medical Necessity",
+        "is_eligibility_rule": false,
+        "rule_text": "Submitted clinical notes and physician order must document medical necessity and align with the diagnosis and requested procedure."
+      },
+      {
+        "rule_id": "GEN-PROV-003",
+        "name": "Verified Ordering Provider",
+        "is_eligibility_rule": false,
+        "rule_text": "The ordering provider NPI must be active, verified, and free of payer sanctions or exclusions."
+      }
+    ],
+    "by_procedure": {
+      "27447": [
+        {
+          "rule_id": "PROC-27447-01",
+          "name": "Total Knee Arthroplasty Radiographic & Conservative Criteria",
+          "rule_text": "Total knee arthroplasty (CPT 27447) requires radiographic confirmation of advanced osteoarthritis (Kellgren-Lawrence grade 3-4) and documented failure of conservative management."
+        }
+      ],
+      "72148": [
+        {
+          "rule_id": "PROC-72148-01",
+          "name": "Lumbar MRI Conservative Therapy / Red Flags",
+          "rule_text": "MRI of the lumbar spine without contrast (CPT 72148) requires documented persistent radiculopathy or low back pain failing at least 4-6 weeks of conservative therapy, or documented neurological red flags."
+        }
+      ],
+      "93306": [
+        {
+          "rule_id": "PROC-93306-01",
+          "name": "Transthoracic Echocardiogram Clinical Indication",
+          "rule_text": "Complete transthoracic echocardiogram (CPT 93306) requires documented cardiac symptoms justifying structural or valvular evaluation."
+        }
+      ]
+    }
+  },
+  "reporting": {
+    "json_dir": "server/reports/json",
+    "html_dir": "server/reports/html",
+    "audit_log_path": "server/audit/audit.log",
+    "processed_log_filename": "processed.log",
+    "incoming_dir": "server/data/incoming",
+    "payer_mock_dir": "server/data/payer_mock_data",
+    "sample_bundles_dir": "server/data/sample_bundles"
+  }
+}

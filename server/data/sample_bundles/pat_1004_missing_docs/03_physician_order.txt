@@ -1,0 +1,9 @@
+PHYSICIAN ORDER
+Patient: Sophia Chen
+Patient ID: PAT-1004
+Member ID: MEM-MC-9004
+Procedure Ordered: Echocardiography Transthoracic Complete
+CPT Code: 93306
+ICD-10 Diagnosis Code: I50.9
+Ordering Physician: Dr. Julian Brooks, MD
+NPI: 3456789012

@@ -1,0 +1,3 @@
+IMAGING REPORT
+Patient: Marcus Holloway | Patient ID: PAT-1003
+Findings: Chest X-ray unremarkable. No knee radiographs or orthopedic imaging on file.

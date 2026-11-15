@@ -1,0 +1,6 @@
+CLINICAL NOTES
+Patient: Elena Morales (PAT-1001 / MEM-MC-9001)
+Date of Visit: 2026-11-10
+Chief Complaint: Low back pain with left leg radiculopathy (ICD-10: M54.5).
+History of Present Illness: Symptoms began 8 weeks ago. Patient completed 6 weeks of physical therapy and oral ibuprofen without resolution. Physical exam demonstrates L5 sensory paresthesia and positive left SLR at 40 degrees.
+Assessment & Plan: Lumbar radiculopathy refractory to conservative care. Order MRI Lumbar Spine Without Contrast (CPT 72148) to evaluate for disc herniation.

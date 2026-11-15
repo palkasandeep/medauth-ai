@@ -1,0 +1,3 @@
+IMAGING REPORT
+Patient: Robert Vance | Patient ID: PAT-1002
+Findings: Right knee radiograph shows Kellgren-Lawrence Grade 4 tricompartmental osteoarthritis with bone-on-bone medial compartment narrowing.

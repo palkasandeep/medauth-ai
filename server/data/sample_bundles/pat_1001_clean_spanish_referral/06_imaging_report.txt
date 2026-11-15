@@ -1,0 +1,4 @@
+IMAGING REPORT
+Patient: Elena Morales | Patient ID: PAT-1001
+Prior Study: Lumbar Spine X-Ray (AP/Lateral)
+Findings: Mild L4-L5 and L5-S1 disc space narrowing without acute fracture or spondylolisthesis. Soft tissue and nerve root evaluation requires MRI Lumbar Spine (CPT 72148).

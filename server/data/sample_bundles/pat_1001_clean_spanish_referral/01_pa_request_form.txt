@@ -1,0 +1,13 @@
+PRIOR AUTHORIZATION REQUEST
+Insurer: MedCore Health Insurance
+Plan Name: MedCore Gold PPO
+Patient Name: Elena Morales
+Patient ID: PAT-1001
+Member ID: MEM-MC-9001
+Diagnosis Code: M54.5
+Requested Service: MRI Lumbar Spine Without Contrast
+Procedure Code: 72148
+Urgency: Routine
+Ordering Physician: Dr. Marcus Vance, MD
+Provider NPI: 1234567890
+Clinical Justification: 48-year-old female with 8 weeks of persistent lumbar radiculopathy radiating to the left lower extremity despite 6 weeks of structured physical therapy and NSAID therapy. Positive straight-leg raise at 40 degrees.

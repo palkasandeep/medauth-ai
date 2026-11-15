@@ -1,0 +1,14 @@
+{
+  "doc_type": "lab_results",
+  "patient_id": "PAT-1001",
+  "member_id": "MEM-MC-9001",
+  "collected_date": "2026-11-08",
+  "results": {
+    "wbc": 6.8,
+    "hemoglobin": 13.6,
+    "platelets": 245,
+    "creatinine": 0.85,
+    "glucose": 94,
+    "esr": 12
+  }
+}

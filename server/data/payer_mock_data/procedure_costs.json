@@ -1,0 +1,22 @@
+[
+  {
+    "procedure_code": "72148",
+    "description": "MRI Lumbar Spine Without Contrast",
+    "allowed_amount": 1250
+  },
+  {
+    "procedure_code": "27447",
+    "description": "Total Knee Arthroplasty",
+    "allowed_amount": 24500
+  },
+  {
+    "procedure_code": "93306",
+    "description": "Echocardiography Transthoracic Complete",
+    "allowed_amount": 850
+  },
+  {
+    "procedure_code": "70553",
+    "description": "MRI Brain With and Without Contrast",
+    "allowed_amount": 1650
+  }
+]

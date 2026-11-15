@@ -1,0 +1,13 @@
+PRIOR AUTHORIZATION REQUEST
+Insurer: MedCore Health Insurance
+Plan Name: MedCore Platinum Advantage
+Patient Name: Sophia Chen
+Patient ID: PAT-1004
+Member ID: MEM-MC-9004
+Diagnosis Code: I50.9
+Requested Service: Echocardiography Transthoracic Complete
+Procedure Code: 93306
+Urgency: Routine
+Ordering Physician: Dr. Julian Brooks, MD
+Provider NPI: 3456789012
+Clinical Justification: Exertional dyspnea and bilateral ankle edema suspicious for congestive heart failure (I50.9).

@@ -1,0 +1,10 @@
+PHYSICIAN ORDER
+Patient: Robert Vance
+Patient ID: PAT-1002
+Member ID: MEM-MC-9002
+Procedure Ordered: Total Knee Arthroplasty
+CPT Code: 27447
+ICD-10 Diagnosis Code: M17.11
+Ordering Physician: Dr. Priya Nair, MD
+NPI: 2345678901
+Priority: Routine

@@ -1,0 +1,38 @@
+[
+  {
+    "npi": "1234567890",
+    "provider_name": "Dr. Marcus Vance, MD",
+    "specialty": "Orthopedic & Spine Surgery",
+    "verified": true,
+    "sanctioned": false,
+    "license_status": "ACTIVE",
+    "network_status": "IN_NETWORK"
+  },
+  {
+    "npi": "2345678901",
+    "provider_name": "Dr. Priya Nair, MD",
+    "specialty": "Orthopedic Joint Reconstruction",
+    "verified": true,
+    "sanctioned": false,
+    "license_status": "ACTIVE",
+    "network_status": "IN_NETWORK"
+  },
+  {
+    "npi": "3456789012",
+    "provider_name": "Dr. Julian Brooks, MD",
+    "specialty": "Cardiology",
+    "verified": true,
+    "sanctioned": false,
+    "license_status": "ACTIVE",
+    "network_status": "IN_NETWORK"
+  },
+  {
+    "npi": "9999999999",
+    "provider_name": "Dr. Victor Krell, MD",
+    "specialty": "Unverified Clinic",
+    "verified": false,
+    "sanctioned": true,
+    "license_status": "SUSPENDED",
+    "network_status": "EXCLUDED"
+  }
+]

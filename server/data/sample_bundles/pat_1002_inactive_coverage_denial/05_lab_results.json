@@ -1,0 +1,11 @@
+{
+  "doc_type": "lab_results",
+  "patient_id": "PAT-1002",
+  "member_id": "MEM-MC-9002",
+  "results": {
+    "wbc": 7.1,
+    "hemoglobin": 14,
+    "creatinine": 1,
+    "glucose": 102
+  }
+}

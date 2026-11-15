@@ -1,0 +1,8 @@
+CARTA DE REFERENCIA MÉDICA
+Fecha: 10 de noviembre de 2026
+Paciente: Elena Morales
+ID de Paciente: PAT-1001
+ID de Miembro: MEM-MC-9001
+Médico Remitente: Dr. Marcus Vance, MD (NPI: 1234567890)
+Diagnóstico: Lumbalgia con radiculopatía persistente (M54.5).
+Motivo de Referencia: Se solicita autorización previa para Resonancia Magnética de Columna Lumbar sin contraste (CPT 72148) debido a dolor lumbar refractario tras 6 semanas de fisioterapia conservadora y tratamiento antiinflamatorio.

@@ -1,0 +1,6 @@
+INSURANCE CARD
+Payer: MedCore
+Plan: MedCore Platinum Advantage
+Member Name: Sophia Chen
+Member ID: MEM-MC-9004
+Patient ID: PAT-1004

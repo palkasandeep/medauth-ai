@@ -1,0 +1,3 @@
+CLINICAL NOTES
+Patient: Robert Vance (PAT-1002 / MEM-MC-9002)
+Assessment: End-stage right knee osteoarthritis (M17.11) with severe joint space narrowing and failed conservative care over 12 weeks. Recommend Total Knee Arthroplasty (CPT 27447).

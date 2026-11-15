@@ -1,0 +1,3 @@
+CLINICAL NOTES
+Patient: Sophia Chen (PAT-1004 / MEM-MC-9004)
+Assessment: Progressive dyspnea on exertion and peripheral edema (ICD-10: I50.9). Order transthoracic echocardiogram (CPT 93306).
