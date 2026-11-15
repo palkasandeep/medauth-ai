@@ -1,7 +1,7 @@
 {
   "models": {
-    "reasoning": "gemini-2.5-flash",
-    "light": "gemini-2.5-flash-lite",
+    "reasoning": "gemini-3.5-flash",
+    "light": "gemini-3.5-flash-lite",
     "embedding": "gemini-embedding-001"
   },
   "agents": {

@@ -10,7 +10,7 @@ from typing import Dict, List, Optional
 from dotenv import load_dotenv
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -168,10 +168,13 @@ def api_run_case(req: RunCaseRequest):
     else:
         raise HTTPException(status_code=400, detail="Provide either sampleId or filePaths.")
 
-    return run_case(
-        resolved_files,
-        mock_payer_base_url=f"http://127.0.0.1:{PORT}/payer",
-    )
+    try:
+        return run_case(
+            resolved_files,
+            mock_payer_base_url=f"http://127.0.0.1:{PORT}/payer",
+        )
+    except Exception as exc:
+        return JSONResponse(status_code=500, content={"error": str(exc)})
 
 
 @app.post("/api/cases/{thread_id}/review")
