@@ -6,7 +6,7 @@ from typing import Callable, Dict, List, Optional
 from server.agents.rag.vector_store import IndexedChunk, case_vector_store
 from server.schemas import Decision, DecisionRouting, Report, RuleResult
 from server.utils.config import get_models_config
-from server.utils.gemini_client import embed_text, has_gemini_api_key
+from server.utils.gemini_client import embed_text, embed_texts_batch, has_gemini_api_key
 
 
 def chunk_text(text: str, chunk_size: int, overlap: int) -> List[str]:
@@ -74,9 +74,13 @@ class IndexingAgent:
         text = format_report_for_indexing(report)
         text_chunks = chunk_text(text, int(rag_cfg["chunk_size"]), int(rag_cfg["chunk_overlap"]))
 
+        vectors = (
+            embed_texts_batch(text_chunks)
+            if self._embedder is embed_text
+            else [self._embedder(c) for c in text_chunks]
+        )
         indexed: List[IndexedChunk] = []
-        for idx, chunk in enumerate(text_chunks, start=1):
-            vec = self._embedder(chunk)
+        for idx, (chunk, vec) in enumerate(zip(text_chunks, vectors), start=1):
             indexed.append(
                 IndexedChunk(
                     chunk_id=f"{report.report_id}#chunk-{idx}",

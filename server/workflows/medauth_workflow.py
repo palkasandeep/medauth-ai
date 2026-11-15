@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor
 import sqlite3
 import uuid
 from pathlib import Path
@@ -154,8 +155,9 @@ def build_case_graph(
                 "node_statuses": {"document": "completed"},
             }
 
-        parsed_docs = document_agent.process_bundle(state.get("file_paths", []))
-        records = [extraction_agent.extract(d) for d in parsed_docs]
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            parsed_docs = list(pool.map(document_agent.process_file, state.get("file_paths", [])))
+            records = list(pool.map(extraction_agent.extract, parsed_docs))
         merged = extraction_agent.merge_documents(records, state.get("case_id") or None)
         return {
             "document_records": [r.model_dump() for r in records],

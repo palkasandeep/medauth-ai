@@ -39,32 +39,30 @@ def get_gemini_client() -> genai.Client:
 def _call_with_retry_and_fallback(
     primary_model: str,
     fn_for_model: Callable[[str], _T],
+    fallback_key: str = "fallbacks",
 ) -> _T:
-    fallbacks = list(get_models_config().get("models", {}).get("fallbacks", []))
+    fallbacks = list(get_models_config().get("models", {}).get(fallback_key, []))
     candidates = [primary_model] + [m for m in fallbacks if m != primary_model]
     last_exc: Optional[Exception] = None
 
     for idx, model_name in enumerate(candidates):
-        for attempt in range(2):
-            try:
+        try:
+            return fn_for_model(model_name)
+        except Exception as exc:
+            last_exc = exc
+            msg = str(exc)
+            if any(k in msg for k in ("503", "UNAVAILABLE", "404", "NOT_FOUND")):
+                print(f"[Gemini] {model_name} unavailable, trying next fallback...")
+                continue
+            if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
+                if idx < len(candidates) - 1:
+                    print(f"[Gemini] {model_name} rate-limited, switching model...")
+                    continue
+                m = re.search(r"retry in (\d+(?:\.\d+)?)s", msg, re.I)
+                wait_s = min(35.0, float(m.group(1)) + 1.0) if m else 15.0
+                time.sleep(wait_s)
                 return fn_for_model(model_name)
-            except Exception as exc:
-                last_exc = exc
-                msg = str(exc)
-                if "503" in msg or "UNAVAILABLE" in msg:
-                    if attempt == 0:
-                        time.sleep(2.0)
-                        continue
-                    break  # try next fallback model
-                if "404" in msg or "NOT_FOUND" in msg:
-                    break  # try next fallback model
-                if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
-                    if attempt == 0 and idx == len(candidates) - 1:
-                        m = re.search(r"retry in (\d+(?:\.\d+)?)s", msg, re.I)
-                        time.sleep(min(45.0, float(m.group(1)) + 2.0) if m else 25.0)
-                        continue
-                    break  # try next fallback model first (each model has its own RPM quota!)
-                raise
+            raise
     if last_exc:
         raise last_exc
     raise RuntimeError("No Gemini models available.")
@@ -111,12 +109,19 @@ def generate_json_with_config(
 
 
 def embed_text(text: str) -> List[float]:
+    return embed_texts_batch([text])[0]
+
+
+def embed_texts_batch(texts: List[str]) -> List[List[float]]:
+    if not texts:
+        return []
     client = get_gemini_client()
     model = get_models_config()["models"]["embedding"]
     resp = _call_with_retry_and_fallback(
         model,
-        lambda m: client.models.embed_content(model=m, contents=text),
+        lambda m: client.models.embed_content(model=m, contents=texts),
+        fallback_key="embedding_fallbacks",
     )
-    if not resp.embeddings or not resp.embeddings[0].values:
-        raise RuntimeError("Gemini embedding response returned no vector values.")
-    return list(resp.embeddings[0].values)
+    if not resp.embeddings:
+        raise RuntimeError("Gemini embedding response returned no vectors.")
+    return [list(e.values) for e in resp.embeddings]
