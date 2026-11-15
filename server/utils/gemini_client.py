@@ -36,19 +36,38 @@ def get_gemini_client() -> genai.Client:
     return _client
 
 
-def _call_with_retry(fn: Callable[[], _T]) -> _T:
-    for attempt in range(3):
-        try:
-            return fn()
-        except Exception as exc:
-            msg = str(exc)
-            if ("429" in msg or "RESOURCE_EXHAUSTED" in msg) and attempt < 2:
-                match = re.search(r"retry in (\d+(?:\.\d+)?)s", msg, re.I)
-                wait_s = min(45.0, float(match.group(1)) + 2.0) if match else 20.0
-                time.sleep(wait_s)
-                continue
-            raise
-    return fn()
+def _call_with_retry_and_fallback(
+    primary_model: str,
+    fn_for_model: Callable[[str], _T],
+) -> _T:
+    fallbacks = list(get_models_config().get("models", {}).get("fallbacks", []))
+    candidates = [primary_model] + [m for m in fallbacks if m != primary_model]
+    last_exc: Optional[Exception] = None
+
+    for idx, model_name in enumerate(candidates):
+        for attempt in range(2):
+            try:
+                return fn_for_model(model_name)
+            except Exception as exc:
+                last_exc = exc
+                msg = str(exc)
+                if "503" in msg or "UNAVAILABLE" in msg:
+                    if attempt == 0:
+                        time.sleep(2.0)
+                        continue
+                    break  # try next fallback model
+                if "404" in msg or "NOT_FOUND" in msg:
+                    break  # try next fallback model
+                if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
+                    if attempt == 0 and idx == len(candidates) - 1:
+                        m = re.search(r"retry in (\d+(?:\.\d+)?)s", msg, re.I)
+                        time.sleep(min(45.0, float(m.group(1)) + 2.0) if m else 25.0)
+                        continue
+                    break  # try next fallback model first (each model has its own RPM quota!)
+                raise
+    if last_exc:
+        raise last_exc
+    raise RuntimeError("No Gemini models available.")
 
 
 def generate_text_with_config(
@@ -62,8 +81,9 @@ def generate_text_with_config(
         temperature=temperature,
         system_instruction=system_instruction,
     )
-    resp = _call_with_retry(
-        lambda: client.models.generate_content(model=model, contents=prompt, config=config)
+    resp = _call_with_retry_and_fallback(
+        model,
+        lambda m: client.models.generate_content(model=m, contents=prompt, config=config),
     )
     return (resp.text or "").strip()
 
@@ -80,8 +100,9 @@ def generate_json_with_config(
         response_mime_type="application/json",
         system_instruction=system_instruction,
     )
-    resp = _call_with_retry(
-        lambda: client.models.generate_content(model=model, contents=prompt, config=config)
+    resp = _call_with_retry_and_fallback(
+        model,
+        lambda m: client.models.generate_content(model=m, contents=prompt, config=config),
     )
     raw = (resp.text or "{}").strip()
     cleaned = re.sub(r"^" + _FENCE + r"json\s*", "", raw, flags=re.IGNORECASE)
@@ -92,8 +113,9 @@ def generate_json_with_config(
 def embed_text(text: str) -> List[float]:
     client = get_gemini_client()
     model = get_models_config()["models"]["embedding"]
-    resp = _call_with_retry(
-        lambda: client.models.embed_content(model=model, contents=text)
+    resp = _call_with_retry_and_fallback(
+        model,
+        lambda m: client.models.embed_content(model=m, contents=text),
     )
     if not resp.embeddings or not resp.embeddings[0].values:
         raise RuntimeError("Gemini embedding response returned no vector values.")
